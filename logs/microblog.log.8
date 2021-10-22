@@ -1,0 +1,143 @@
+2021-09-12 08:19:07,536 ERROR: Exception on / [GET] [in /home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask/app.py:1455]
+Traceback (most recent call last):
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/pymysql/connections.py", line 614, in connect
+    (self.host, self.port), self.connect_timeout, **kwargs
+  File "/usr/lib/python3.7/socket.py", line 727, in create_connection
+    raise err
+  File "/usr/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3211, in _wrap_pool_connect
+    return fn()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 368, in __init__
+    self.__connect()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/pymysql/connections.py", line 353, in __init__
+    self.connect()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/pymysql/connections.py", line 664, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '34.121.210.238' (timed out)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask/app.py", line 1511, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask/app.py", line 1857, in preprocess_request
+    rv = self.ensure_sync(func)()
+  File "/home/zaldi_admn/bevii/app/main/routes.py", line 19, in before_request
+    if current_user.is_authenticated:
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/werkzeug/local.py", line 422, in __get__
+    obj = instance._get_current_object()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/werkzeug/local.py", line 544, in _get_current_object
+    return self.__local()  # type: ignore
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/flask_login/login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "/home/zaldi_admn/bevii/app/models.py", line 239, in load_user
+    return User.query.get(int(id))
+  File "<string>", line 2, in get
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/deprecations.py", line 390, in warned
+    return fn(*args, **kwargs)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 942, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 954, in _get_impl
+    execution_options=self._execution_options,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2843, in _get_impl
+    load_options=load_options,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 535, in load_on_pk_identity
+    bind_arguments=bind_arguments,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1688, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1530, in _connection_for_bind
+    engine, execution_options
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 747, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3165, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3244, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3215, in _wrap_pool_connect
+    e, dialect, self
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2069, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 3211, in _wrap_pool_connect
+    return fn()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 307, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 767, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 425, in checkout
+    rec = pool._do_get()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 253, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 368, in __init__
+    self.__connect()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 611, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/pool/base.py", line 605, in __connect
+    connection = pool._invoke_creator(self)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/create.py", line 578, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 584, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/pymysql/connections.py", line 353, in __init__
+    self.connect()
+  File "/home/zaldi_admn/bevii-env/lib/python3.7/site-packages/pymysql/connections.py", line 664, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '34.121.210.238' (timed out)")
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
